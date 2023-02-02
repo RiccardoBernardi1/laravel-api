@@ -1,34 +1,33 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="my-4">{{$project->name}}</h1>
+<h1 class="my-4 fw-bold">{{$project->name}}</h1>
 @if($project->type?->name)
-    <h3>Type: <a href="{{route('admin.types.show',$project->type->slug)}}" class="badge bg-primary text-decoration-none text-light">{{$project->type->name}}</a></h3>
+    <h2 class="d-inline">Type : <a href="{{route('admin.types.show',$project->type->slug)}}" class="badge bg-primary text-decoration-none text-light ms-2 me-4">{{$project->type->name}}</a></h2>
 @else
-    <h3>No Type Associated</h3>
+    <h2>No Type Associated</h2>
 @endif
 @if($project->technologies->isNotEmpty())
-    <h4 class="my-4">
-        Technologies:
+    <h3 class="my-4 d-inline">
+        Technologies :
         @foreach ($project->technologies as $technology)
-            <a href="{{route('admin.types.show',$technology->slug)}}" class="badge bg-secondary text-decoration-none text-light">{{$technology->name}}</a>
+            <a href="{{route('admin.technologies.show',$technology->slug)}}" class="badge bg-secondary text-decoration-none text-light ms-2"">{{$technology->name}}</a>
         @endforeach
-    </h4>
+    </h3>
 @else
-    <h4>No Technology</h4>
+    <h3>No Technology</h3>
 @endif
 @if($project->cover_image)
-    <img src="{{asset("storage/$project->cover_image")}}" alt="{{$project->name}}" class="w-50">
+    <img src="{{asset("storage/$project->cover_image")}}" alt="{{$project->name}}" class="w-50 mt-4 ">
 @endif
-<h4 class="mt-4">Description:</h4>
-<p>{{$project->description}}</p>
-<h4 class="mt-4 d-inline">Costumer:</h4>
+<h4 class="mt-4 ">Description:</h4>
+<p >{{$project->description}}</p>
+<h4 class="mt-4 d-inline">Costumer : </h4>
 <span>{{$project->client}}</span>
 <div class="mt-4">
-    <a href="{{route('admin.projects.edit',$project->slug)}}" class="btn btn-warning me-3">Edit</a>
-    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$project->id}}">Delete</button>
+    <a href="{{route('admin.projects.edit',$project->slug)}}" class="btn btn-warning me-2 fw-bold">Edit</a>
+    <button class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal{{$project->id}}">Delete</button>
 </div>
-
 
 
 <div class="modal fade" id="modal{{$project->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
