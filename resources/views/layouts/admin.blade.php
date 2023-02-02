@@ -107,7 +107,7 @@
                     class="nav-link text-white {{str_contains(Route::currentRouteName(), 'admin.types') ? 'bg-secondary' : '' }}"
                     href="{{route('admin.types.index')}}"
                   >
-                      <i class="fa-solid fa-folder-open"></i>
+                      <i class="fa-solid fa-puzzle-piece"></i>
                       Types
                   </a>
               </li>
@@ -116,7 +116,7 @@
                     class="nav-link text-white {{str_contains(Route::currentRouteName(), 'admin.technologies') ? 'bg-secondary' : '' }}"
                     href="{{route('admin.technologies.index')}}"
                   >
-                      <i class="fa-solid fa-folder-open"></i>
+                      <i class="fa-solid fa-microchip"></i>
                       Technologies
                   </a>
               </li>
