@@ -10,13 +10,13 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $types = Type::with('projects')->get();
+        $types = Type::all();
         return $types;
     }
     public function show($slug)
     {   
         try{
-            $type = Type::where('slug',$slug)->with('projects')->firstOrFail();
+            $type = Type::where('slug',$slug)->with('projects.technologies')->firstOrFail();
             return $type;
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
             return response([
