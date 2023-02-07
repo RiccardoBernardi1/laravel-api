@@ -44,7 +44,7 @@ class TechnologyController extends Controller
         $new_technology->fill($data);
         $new_technology->slug=Str::slug($new_technology->name,'-');
         $new_technology->save();
-        return redirect()->route('admin.technologies.index')->with('message',"The technologies '$new_technology->name' has been created");
+        return redirect()->route('admin.technologies.index')->with('message',"The technology '$new_technology->name' has been created");
     }
 
     /**
